@@ -1,0 +1,194 @@
+:root {
+    --color-black-1: #020202;
+    --color-black-2: #242424;
+
+    --color-white-1: #ffffff;
+
+    --color-grey-1: #353535;
+
+    --coursor-slide-swich: grab;
+    --coursor-slider: pointer;
+
+    --hue: 0;
+    --saturation: 100;
+    --lightness: 50;
+
+    --angle-saturation-switch: 140deg;
+    --angle-lightness-switch: 90deg;
+
+    --slider-width: 300px;
+    --slider-height: 24px;
+
+    --slide-swich-color: hsl(var(--hue), calc(var(--saturation) * 1%), calc(var(--lightness) * 1%));
+    --slide-swich-diameter: calc(var(--slider-height) * 2.2);
+    --slide-swich-small-diameter: 25px;
+    --slide-swich-position-x: 0;
+
+    --slider-bg: linear-gradient(to right,
+    hsl(0, calc(var(--saturation) * 1%), calc(var(--lightness) * 1%)),
+    hsl(30, calc(var(--saturation) * 1%), calc(var(--lightness) * 1%)),
+    hsl(60, calc(var(--saturation) * 1%), calc(var(--lightness) * 1%)),
+    hsl(90, calc(var(--saturation) * 1%), calc(var(--lightness) * 1%)),
+    hsl(120, calc(var(--saturation) * 1%), calc(var(--lightness) * 1%)),
+    hsl(150, calc(var(--saturation) * 1%), calc(var(--lightness) * 1%)),
+    hsl(180, calc(var(--saturation) * 1%), calc(var(--lightness) * 1%)),
+    hsl(210, calc(var(--saturation) * 1%), calc(var(--lightness) * 1%)),
+    hsl(240, calc(var(--saturation) * 1%), calc(var(--lightness) * 1%)),
+    hsl(270, calc(var(--saturation) * 1%), calc(var(--lightness) * 1%)),
+    hsl(300, calc(var(--saturation) * 1%), calc(var(--lightness) * 1%)),
+    hsl(330, calc(var(--saturation) * 1%), calc(var(--lightness) * 1%)),
+    hsl(360, calc(var(--saturation) * 1%), calc(var(--lightness) * 1%)));
+
+    --slide-swich-saturation-bg: linear-gradient(to bottom,
+    hsl(0, calc(var(--saturation) * 1%), calc(var(--lightness) * 1%)),
+    hsl(30, calc(var(--saturation) * 1%), calc(var(--lightness) * 1%)),
+    hsl(60, calc(var(--saturation) * 1%), calc(var(--lightness) * 1%)),
+    hsl(90, calc(var(--saturation) * 1%), calc(var(--lightness) * 1%)),
+    hsl(120, calc(var(--saturation) * 1%), calc(var(--lightness) * 1%)),
+    hsl(150, calc(var(--saturation) * 1%), calc(var(--lightness) * 1%)),
+    hsl(180, calc(var(--saturation) * 1%), calc(var(--lightness) * 1%)),
+    hsl(210, calc(var(--saturation) * 1%), calc(var(--lightness) * 1%)),
+    hsl(240, calc(var(--saturation) * 1%), calc(var(--lightness) * 1%)),
+    hsl(270, calc(var(--saturation) * 1%), calc(var(--lightness) * 1%)),
+    hsl(300, calc(var(--saturation) * 1%), calc(var(--lightness) * 1%)),
+    hsl(330, calc(var(--saturation) * 1%), calc(var(--lightness) * 1%)),
+    hsl(360, calc(var(--saturation) * 1%), calc(var(--lightness) * 1%)));
+
+    --slider-border: 3px solid var(--color-white-1);
+
+    --body-bg: hsl(var(--hue), calc(var(--saturation) * 1%), calc(var(--lightness) * 1%));
+
+    --slide-switches-box-length: 140px;
+
+}
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--body-bg);
+}
+.app-container {
+    width: 800px;
+    height: 500px;
+    background-color: var(--color-black-1);
+    border-radius: 10px;
+}
+.color-picker-box {
+    height: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.slider {
+    position: relative;
+    width: var(--slider-width);
+    height: var(--slider-height);
+    margin: calc(var(--slide-switches-box-length) / 2) 0;
+    background-image: var(--slider-bg);
+    border: var(--slider-border);
+    border-radius: 5px;
+    cursor: var(--coursor-slider);
+    z-index: 3;
+}
+
+.slider__slide-switch--color {
+    position: absolute;
+    top: 50%;
+    left: calc(var(--slide-swich-position-x) * 1px);
+    transform: translate(-50%, -50%);
+    background-color: var(--slide-swich-color);
+    width: var(--slide-swich-diameter);
+    height: var(--slide-swich-diameter);
+    border: var(--slider-border);
+    border-radius: 50%;
+    cursor: var(--coursor-slide-swich);
+    z-index: 2;
+}
+.slider__sliders-box {
+    position: absolute;
+    top: 50%;
+    left: calc(var(--slide-swich-position-x) * 1px);
+    transform: translate(-50%, -50%);
+    width: var(--slide-switches-box-length);
+    height: var(--slide-switches-box-length);
+    clip-path: polygon(0 0, 100% 0, 50% 50%, 100% 100%, 0 100%, 50% 50%);
+    border: 3px solid var(--color-grey-1);
+    border-radius: 50%;
+    cursor: initial;
+    z-index: -1;
+}
+.slider__slide-switch--saturation {
+    position: absolute;
+    /* top: calc(50% - var(--slide-switches-box-length) / 2); */
+    /* left: 50%; */
+    top: 50%;
+    right: calc(50% + var(--slide-switches-box-length) / 2);
+    transform: translate(50%, -50%) rotate(var(--angle-saturation-switch));
+    -ms-transform-origin: calc(var(--slide-switches-box-length) / 2 + var(--slide-swich-small-diameter) / 2) 50%;
+    /* transform-origin: 50% calc(var(--slide-switches-box-length) / 2 + var(--slide-swich-small-diameter) / 2); */
+    transform-origin: calc(var(--slide-switches-box-length) / 2 + var(--slide-swich-small-diameter) / 2) 50%;
+    width: var(--slide-swich-small-diameter);
+    height: var(--slide-swich-small-diameter);
+    background-image: var(--slide-swich-saturation-bg);
+    border: var(--slider-border);
+    border-radius: 50%;
+    cursor: var(--coursor-slide-swich);
+    /* filter: var(--grayscale); */
+    /* transition: all .1s ease; */
+}
+
+.slider__slide-switch--lightness {
+    position: absolute;
+    top: 50%;
+    left: calc(50% + var(--slide-switches-box-length) / 2);
+    transform: translate(-50%, -50%) rotate(var(--angle-lightness-switch));
+    -ms-transform-origin: calc((var(--slide-switches-box-length) / 2 * -1) + var(--slide-swich-small-diameter) / 2) 50%;
+    /* transform-origin: calc((var(--slide-switches-box-length) / 3) * (-1) - var(--slide-swich-small-diameter) / 2) 50%; */
+    /* transform-origin: calc(-60px + 10px) 50%; */
+    transform-origin: calc((var(--slide-switches-box-length) / 2 * -1) + var(--slide-swich-small-diameter) / 2) 50%;
+    width: var(--slide-swich-small-diameter);
+    height: var(--slide-swich-small-diameter);
+    background-color: hsl(0, 0%, calc(var(--lightness) * 1%));
+    border: var(--slider-border);
+    border-radius: 50%;
+    cursor: var(--coursor-slide-swich);
+    /* transition: all .1s ease; */
+}
+
+.color-value-box {
+    height: 50%;
+    width: 100%;
+    background-color: ivory;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.hsl-value,
+.hex-value,
+.rgb-value {
+    width: 100%;
+    line-height: 60px;
+}
+
+.hsl-value {
+    background-color: khaki;
+    text-align: center;
+}
+.hex-value {
+    background-color: lawngreen;
+    
+}
+.rgb-value {
+    background-color: lightcoral;
+    
+}
